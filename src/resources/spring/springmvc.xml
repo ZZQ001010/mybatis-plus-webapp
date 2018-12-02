@@ -1,0 +1,79 @@
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+            http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd  
+           http://www.springframework.org/schema/tx   
+           http://www.springframework.org/schema/tx/spring-tx-3.2.xsd  
+           http://www.springframework.org/schema/mvc   
+           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">  
+		<!-- 注解配置 -->
+		 <mvc:annotation-driven />
+	    <mvc:default-servlet-handler/>
+	    <!-- springmvc 一定要配置扫描器 -->
+		<context:component-scan base-package="com.zznr.anshen.controller.controller"></context:component-scan>
+		<context:property-placeholder location="classpath:/resources/conf/resource.properties"/>
+		<!-- 配置视图解释器 jsp -->
+		<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="/WEB-INF/jsp"/>
+			<property name="suffix" value=".jsp"/>	
+		</bean>
+	
+	<!-- <bean id="exceptionResolver" class="com.zzq.exceptionhandler.GlobalExceptionHandler" /> -->
+		<!-- 配置登陆拦截器0 -->
+   	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/images/**"/>
+			<mvc:exclude-mapping path="/user/login"/>
+			<mvc:exclude-mapping path="/xz/getWsImg"/>
+			 <bean class="com.zznr.anshen.controller.intercptor.LoginIntercptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>     -->
+	<!-- 配置系统管理的视图映射器 -->
+	<mvc:view-controller path="xtgl/user/updateUser" view-name="/xtgl/user/updateUser"/>
+	<mvc:view-controller path="xtgl/role/addRole" view-name="/xtgl/role/addRole"/>
+	<mvc:view-controller path="xtgl/role/fpzy" view-name="/xtgl/role/fpzy"/>
+	<mvc:view-controller path="xtgl/module/addModule" view-name="/xtgl/module/addModule"/>
+	<mvc:view-controller path="xtgl/module/editModule" view-name="/xtgl/module/updateModule"/>
+	
+	<!-- 配置行政案件的视图映射器 -->
+	<mvc:view-controller path="zxaj/ajtj/ajtj" view-name="/xzaj/ajtj/ajtj"/>
+	<mvc:view-controller path="xzaj/ajtj/ajtj_lb" view-name="/xzaj/ajtj/ajtj_lb"/>
+	<mvc:view-controller path="xzaj/ajtj/wsList" view-name="/xzaj/ajtj/wsList"/>
+	<mvc:view-controller path="xsaj/ajtj/wsList" view-name="/xsaj/ajtj/wsList"/>
+	<mvc:view-controller path="xzaj/yjlx/yjlxWsList" view-name="/xzaj/yjlx/yjlxWsList"/>
+	<mvc:view-controller path="xzaj/ajyj/liulanjilu" view-name="/xzaj/ajyj/liulanjilu"/>
+	
+	
+	<!-- 配置刑事案件的视图映射器 -->		
+	<mvc:view-controller path="xsaj/wspx/wspx" view-name="/xsaj/wspx/wspx"/>
+	<mvc:view-controller path="xsaj/wsmb/brank" view-name="/xsaj/wspx/brank"/>
+	<mvc:view-controller path="xsaj/wsmb/wsmb" view-name="/xsaj/wsmb/wsmb"/>
+	<mvc:view-controller path="xsaj/yjxx/yjxx_lb" view-name="/xsaj/ajyj/yjxx_lb"/>
+	<mvc:view-controller path="xsaj/ajyj/liulanjilu" view-name="/xsaj/ajyj/liulanjilu"/>
+	<mvc:view-controller path="xsaj/yjjl/yjjl" view-name="/xsaj/yjjl/yjjl"/>
+	<mvc:view-controller path="xsaj/yjjl/addyjjl" view-name="/xzaj/yjjl/yjzz"/>
+	<mvc:view-controller path="xsaj/yjlx/yjlx" view-name="/xsaj/yjlx/yjlx"/>
+	<mvc:view-controller path="xsaj/yjlx/yjlxWsList" view-name="/xsaj/yjlx/yjlxWsList"/>
+	<mvc:view-controller path="xsaj/ajtj/ajtj" view-name="/xsaj/ajtj/ajtj"/>
+	<mvc:view-controller path="xsaj/ajtj/ajtj_lb" view-name="/xsaj/ajtj/ajtj_lb"/>
+	<mvc:view-controller path="xsws/ysb" view-name="/xsws/ysb/ysb"/>
+	<mvc:view-controller path="xsws/wsb" view-name="/xsws/wsb/wsb"/>
+
+									
+		<!-- 文件上传 -->	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 		 <property name="defaultEncoding" value="utf-8"></property>   
+        <property name="maxUploadSize" value="10485760000"></property>  
+        <property name="maxInMemorySize" value="40960"></property>  
+ 	</bean>
+ 
+</beans>
